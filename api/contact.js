@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
   // Get Resend API key from environment
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const TO_EMAIL = process.env.TO_EMAIL || 'info@longwoodmanagement.com';
+  const TO_EMAIL = process.env.TO_EMAIL || 'paulabrahams@outlook.com';
 
   if (!RESEND_API_KEY) {
     console.error('RESEND_API_KEY not configured');
