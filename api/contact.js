@@ -80,7 +80,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Longwood Management <onboarding@resend.dev>',
+        from: 'Longwood Management <noreply@longwoodmanagement.co.uk>',
         to: [TO_EMAIL],
         reply_to: email,
         subject: `New Enquiry: ${safeSubject || 'Website Contact Form'}`,
