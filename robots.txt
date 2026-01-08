@@ -1,0 +1,11 @@
+# Robots.txt for Longwood Management Ltd
+# https://longwoodmanagement.co.uk
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://longwoodmanagement.co.uk/sitemap.xml
+
+# Disallow admin/api paths
+Disallow: /api/

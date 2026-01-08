@@ -23,7 +23,25 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, telephone, subject, message, website } = req.body || {};
+    const { name, email, telephone, subject, message, website, _csrf } = req.body || {};
+
+    // CSRF token validation
+    const csrfHeader = req.headers['x-csrf-token'];
+    if (!_csrf || !csrfHeader || _csrf !== csrfHeader) {
+      return res.status(403).json({ error: 'Invalid request. Please refresh the page and try again.' });
+    }
+
+    // Validate token timestamp (must be within last 30 minutes)
+    try {
+      const decoded = Buffer.from(_csrf, 'base64').toString();
+      const timestamp = parseInt(decoded.split(':')[0], 10);
+      const thirtyMinutes = 30 * 60 * 1000;
+      if (Date.now() - timestamp > thirtyMinutes) {
+        return res.status(403).json({ error: 'Session expired. Please refresh the page and try again.' });
+      }
+    } catch (e) {
+      return res.status(403).json({ error: 'Invalid request. Please refresh the page and try again.' });
+    }
 
     if (website) {
       return res.status(400).json({ error: 'Spam detected' });
@@ -38,6 +56,23 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid email address' });
     }
 
+    // Sanitize input for HTML email to prevent XSS
+    const escapeHtml = (str) => {
+      if (!str) return '';
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    };
+
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeTelephone = escapeHtml(telephone);
+    const safeSubject = escapeHtml(subject);
+    const safeMessage = escapeHtml(message);
+
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -48,16 +83,16 @@ export default async function handler(req, res) {
         from: 'Longwood Management <onboarding@resend.dev>',
         to: [TO_EMAIL],
         reply_to: email,
-        subject: `New Enquiry: ${subject || 'Website Contact Form'}`,
+        subject: `New Enquiry: ${safeSubject || 'Website Contact Form'}`,
         text: `Name: ${name}\nEmail: ${email}\nTelephone: ${telephone || 'Not provided'}\nBudget: ${subject || 'Not specified'}\n\nMessage:\n${message}`,
         html: `
           <h2>New Enquiry from Longwood Management Website</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Telephone:</strong> ${telephone || 'Not provided'}</p>
-          <p><strong>Budget:</strong> ${subject || 'Not specified'}</p>
+          <p><strong>Name:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
+          <p><strong>Telephone:</strong> ${safeTelephone || 'Not provided'}</p>
+          <p><strong>Budget:</strong> ${safeSubject || 'Not specified'}</p>
           <h3>Message:</h3>
-          <p>${message.replace(/\n/g, '<br>')}</p>
+          <p>${safeMessage.replace(/\n/g, '<br>')}</p>
         `,
       }),
     });

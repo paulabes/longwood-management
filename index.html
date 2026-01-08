@@ -1,118 +1,77 @@
-<html lang="en" class="scroll-smooth"><head>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Longwood Management Ltd | British Construction &amp; Property</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Longwood Management Ltd - Trusted London builders delivering quality construction, renovations, and property management services across London and the South East. Quality work, honest service.">
+    <meta name="keywords" content="London builders, construction London, property management, home renovations, house extensions, landscape gardening, building contractors London, South East builders">
+    <meta name="author" content="Longwood Management Ltd">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://longwoodmanagement.co.uk/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://longwoodmanagement.co.uk/">
+    <meta property="og:title" content="Longwood Management Ltd | British Construction &amp; Property">
+    <meta property="og:description" content="Trusted London builders delivering quality construction, renovations, and property management services. Quality work, honest service.">
+    <meta property="og:image" content="https://longwoodmanagement.co.uk/img/hero-bg.avif">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:site_name" content="Longwood Management Ltd">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://longwoodmanagement.co.uk/">
+    <meta name="twitter:title" content="Longwood Management Ltd | British Construction &amp; Property">
+    <meta name="twitter:description" content="Trusted London builders delivering quality construction, renovations, and property management services. Quality work, honest service.">
+    <meta name="twitter:image" content="https://longwoodmanagement.co.uk/img/hero-bg.avif">
+
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Longwood Management Ltd",
+      "description": "Trusted London builders delivering quality construction, renovations, and property management services across London and the South East.",
+      "url": "https://longwoodmanagement.co.uk",
+            "image": "https://longwoodmanagement.co.uk/img/hero-bg.avif",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Savoy House, Savoy Circus",
+        "addressLocality": "London",
+        "postalCode": "W3 7DA",
+        "addressCountry": "GB"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.5074",
+        "longitude": "-0.1278"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "London"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "South East England"
+        }
+      ],
+      "serviceType": ["Construction", "Property Management", "Home Renovations", "House Extensions", "Landscape Gardening"],
+      "priceRange": "££££",
+      "openingHours": "Mo-Fr 08:00-18:00",
+      "sameAs": []
+    }
+    </script>
+
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&amp;display=swap" rel="stylesheet">
-    <style>
-      /* Base Configuration */
-      :root {
-      --gold: #D4AF37;
-      }
-      body {
-      background-color: #0a192f;
-      color: #e5e5e5;
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      }
-      h1, h2, h3, h4, h5, h6, .font-jakarta {
-      font-family: 'Inter', sans-serif;
-      }
-      /* Utilities */
-      .glass-panel {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      .glass-nav {
-      background: rgba(10, 25, 47, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: none;
-      }
-      /* Animations */
-      .fade-in-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      will-change: opacity, transform;
-      }
-      .fade-in-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-      }
-      /* Stagger delays */
-      .delay-100 { transition-delay: 100ms; }
-      .delay-200 { transition-delay: 200ms; }
-      .delay-300 { transition-delay: 300ms; }
-      .image-hover-zoom {
-      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-      .group:hover .image-hover-zoom {
-      transform: scale(1.05);
-      }
-      /* Hide Scrollbar */
-      .no-scrollbar::-webkit-scrollbar {
-      display: none;
-      }
-      .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-      }
-    </style>
-    <link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap">
-    <style id="all-fonts-style-font-geist">
-      .font-geist { font-family: 'Geist', sans-serif !important; }
-    </style>
-    <link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap">
-    <style id="all-fonts-style-font-roboto">
-      .font-roboto { font-family: 'Roboto', sans-serif !important; }
-    </style>
-    <link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap">
-    <style id="all-fonts-style-font-montserrat">
-      .font-montserrat { font-family: 'Montserrat', sans-serif !important; }
-    </style>
-    <link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap">
-    <style id="all-fonts-style-font-poppins">
-      .font-poppins { font-family: 'Poppins', sans-serif !important; }
-    </style>
-
-    <link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap">
-    <style id="all-fonts-style-font-bricolage">
-      .font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }
-    </style>
-    <link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap">
-    <style id="all-fonts-style-font-jakarta">
-      .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }
-    </style>
-
-    <link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap">
-    <style id="all-fonts-style-font-space-grotesk">
-      .font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }
-    </style>
-    <link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap">
-    <style id="all-fonts-style-font-work-sans">
-      .font-work-sans { font-family: 'Work Sans', sans-serif !important; }
-    </style>
-
-    <link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap">
-    <style id="all-fonts-style-font-geist-mono">
-      .font-geist-mono { font-family: 'Geist Mono', monospace !important; }
-    </style>
-    <link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap">
-    <style id="all-fonts-style-font-space-mono">
-      .font-space-mono { font-family: 'Space Mono', monospace !important; }
-    </style>
-    <link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap">
-    <style id="all-fonts-style-font-quicksand">
-      .font-quicksand { font-family: 'Quicksand', sans-serif !important; }
-    </style>
-    <link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap">
-    <style id="all-fonts-style-font-nunito">
-      .font-nunito { font-family: 'Nunito', sans-serif !important; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="icon" href="https://api.iconify.design/lucide:building-2.svg?color=%23D4AF37">
     <link rel="stylesheet" href="css/styles.css">
   </head>
@@ -152,11 +111,30 @@
         </a>
 
         <!-- Mobile Menu Toggle -->
-        <button class="md:hidden text-white cursor-hover">
-          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24" data-icon="lucide:menu" data-width="24" class="iconify iconify--lucide">
+        <button id="mobile-menu-btn" class="md:hidden text-white cursor-hover" aria-label="Toggle menu">
+          <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24" class="iconify iconify--lucide">
             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16"></path>
           </svg>
+          <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24" class="iconify iconify--lucide hidden">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12"></path>
+          </svg>
         </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 w-full bg-[#0a192f] border-b border-white/5">
+        <div class="flex flex-col px-6 py-6 space-y-4">
+          <a href="#services" class="text-sm tracking-widest uppercase text-gray-400 hover:text-white transition-colors py-2">Expertise</a>
+          <a href="#projects" class="text-sm tracking-widest uppercase text-gray-400 hover:text-white transition-colors py-2">Portfolio</a>
+          <a href="#process" class="text-sm tracking-widest uppercase text-gray-400 hover:text-white transition-colors py-2">Process</a>
+          <a href="#client-portal" class="text-sm tracking-widest uppercase text-gray-400 hover:text-white transition-colors py-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 10h-1V7c0-2.757-2.243-5-5-5S8 4.243 8 7v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zM10 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3h-6V7z"/>
+            </svg>
+            Login
+          </a>
+          <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 bg-[#D4AF37] text-[#0a192f] text-xs uppercase tracking-widest font-bold mt-4">Enquire</a>
+        </div>
       </div>
     </nav>
 
@@ -520,7 +498,7 @@
 
           <div class="group relative">
             <input type="tel" id="telephone" name="telephone" class="cursor-hover block w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-colors peer placeholder-transparent" placeholder="Telephone">
-            <label for="telephone" class="absolute left-0 top-4 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-[#D4AF37] peer-valid:-top-2 peer-valid:text-xs peer-valid:text-gray-500 pointer-events-none">
+            <label for="telephone" class="absolute left-0 top-4 text-gray-500 text-base transition-all peer-focus:-top-2 peer-focus:text-xs peer-focus:text-[#D4AF37] peer-[:not(:placeholder-shown)]:-top-2 peer-[:not(:placeholder-shown)]:text-xs pointer-events-none">
               Telephone
             </label>
           </div>
@@ -623,8 +601,10 @@
             <h4 class="text-white text-xs uppercase tracking-widest mb-4">
               Contact
             </h4>
-            <p class="text-sm text-gray-500">Savoy House, Savoy Circus</p>
-            <p class="text-sm text-gray-500">London W3 7DA</p>
+            <p class="text-sm text-gray-500">Savoy House,</p>
+            <p class="text-sm text-gray-500">Savoy Circus,</p>
+            <p class="text-sm text-gray-500">London,</p>
+            <p class="text-sm text-gray-500">W3 7DA</p>
           </div>
         </div>
 
@@ -682,6 +662,29 @@
               });
           }, 100);
       });
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+          menuIcon.classList.toggle('hidden');
+          closeIcon.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          });
+        });
+      }
 
       // Horizontal Scroll Buttons
       const scrollContainer = document.getElementById('projectContainer');

@@ -9,6 +9,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const sendBtnText = document.getElementById('send-btn-text');
     const statusDiv = document.getElementById('form-status');
 
+    // Generate CSRF token (timestamp-based with random component)
+    function generateCSRFToken() {
+        const timestamp = Date.now();
+        const random = Math.random().toString(36).substring(2, 15);
+        return btoa(`${timestamp}:${random}`);
+    }
+
+    // Store token on page load
+    const csrfToken = generateCSRFToken();
+
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         statusDiv.textContent = '';
@@ -17,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Get form values
         const name = form.name.value.trim();
         const email = form.email.value.trim();
+        const telephone = form.telephone ? form.telephone.value.trim() : '';
         const subject = form.subject ? form.subject.value : '';
         const message = form.message.value.trim();
         const honeypot = form.website ? form.website.value.trim() : '';
@@ -52,13 +63,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrfToken
                 },
                 body: JSON.stringify({
                     name,
                     email,
+                    telephone,
                     subject,
                     message,
-                    website: honeypot
+                    website: honeypot,
+                    _csrf: csrfToken
                 }),
             });
 
