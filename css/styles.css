@@ -1,0 +1,133 @@
+/* Longwood Management Ltd - Global Styles */
+
+/* Base Configuration */
+:root {
+  --gold: #D4AF37;
+  --dark-blue: #0a192f;
+  --darker-blue: #020c1b;
+  --panel-blue: #112240;
+}
+
+/* Font Family Classes */
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Base Body Styles */
+body {
+  background-color: var(--dark-blue);
+  color: #e5e5e5;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Glass Panel Effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-nav {
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: none;
+}
+
+/* Animations */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Animation Delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+/* Image Hover Zoom Effect */
+.image-hover-zoom {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.group:hover .image-hover-zoom {
+  transform: scale(1.05);
+}
+
+/* Hide Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Selection Styling */
+::selection {
+  background-color: var(--gold);
+  color: var(--dark-blue);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Form Status Messages */
+#form-status {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .mobile-menu-open {
+    overflow: hidden;
+  }
+}
+
+/* Custom Focus States for Accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .image-hover-zoom {
+    transition: none;
+  }
+
+  .group:hover .image-hover-zoom {
+    transform: none;
+  }
+}
