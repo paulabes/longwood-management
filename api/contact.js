@@ -2,40 +2,42 @@
 // Uses Resend for email delivery
 
 export default async function handler(req, res) {
-  // Only allow POST
+  // CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Get Resend API key from environment
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const TO_EMAIL = process.env.TO_EMAIL || 'paulabrahams@outlook.com';
 
   if (!RESEND_API_KEY) {
-    console.error('RESEND_API_KEY not configured');
-    return res.status(500).json({ error: 'Email service not configured' });
+    return res.status(500).json({ error: 'Email service not configured. Please add RESEND_API_KEY.' });
   }
 
   try {
-    const { name, email, subject, message, website } = req.body;
+    const { name, email, subject, message, website } = req.body || {};
 
-    // Honeypot check
     if (website) {
       return res.status(400).json({ error: 'Spam detected' });
     }
 
-    // Validate required fields
     if (!name || !email || !message) {
-      return res.status(400).json({ error: 'Missing required fields' });
+      return res.status(400).json({ error: 'Please fill in all required fields' });
     }
 
-    // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({ error: 'Invalid email address' });
     }
 
-    // Send email via Resend
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -62,14 +64,16 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
-      console.error('Resend error:', data);
-      return res.status(500).json({ error: 'Failed to send email' });
+      console.error('Resend API error:', JSON.stringify(data));
+      // Return more specific error message
+      const errorMsg = data.message || data.error || 'Failed to send email';
+      return res.status(500).json({ error: errorMsg });
     }
 
     return res.status(200).json({ success: true, message: 'Email sent successfully' });
 
   } catch (error) {
-    console.error('Server error:', error);
-    return res.status(500).json({ error: 'Server error' });
+    console.error('Server error:', error.message);
+    return res.status(500).json({ error: 'Server error: ' + error.message });
   }
 }
