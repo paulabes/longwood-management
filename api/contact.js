@@ -23,7 +23,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, subject, message, website } = req.body || {};
+    const { name, email, telephone, subject, message, website } = req.body || {};
 
     if (website) {
       return res.status(400).json({ error: 'Spam detected' });
@@ -49,11 +49,12 @@ export default async function handler(req, res) {
         to: [TO_EMAIL],
         reply_to: email,
         subject: `New Enquiry: ${subject || 'Website Contact Form'}`,
-        text: `Name: ${name}\nEmail: ${email}\nBudget: ${subject || 'Not specified'}\n\nMessage:\n${message}`,
+        text: `Name: ${name}\nEmail: ${email}\nTelephone: ${telephone || 'Not provided'}\nBudget: ${subject || 'Not specified'}\n\nMessage:\n${message}`,
         html: `
           <h2>New Enquiry from Longwood Management Website</h2>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Telephone:</strong> ${telephone || 'Not provided'}</p>
           <p><strong>Budget:</strong> ${subject || 'Not specified'}</p>
           <h3>Message:</h3>
           <p>${message.replace(/\n/g, '<br>')}</p>
